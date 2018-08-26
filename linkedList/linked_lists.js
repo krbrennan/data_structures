@@ -1,5 +1,4 @@
 function List(){
-  this.length = 0
   this.head = null
 
   let Node = function(element){
@@ -9,10 +8,6 @@ function List(){
 
   head = function(){
     return head
-  }
-
-  size = function(){
-    return length
   }
 
 }
@@ -34,12 +29,38 @@ List.prototype.add = function(val) {
   }
 }
 
+List.prototype.delete = function(nodeVal){
+  let current = this.head
+
+// if the head is the nodeVal to delete
+  if(current.value === nodeVal){
+    this.head = current.next
+  } else {
+    let previous = current
+
+    while(current.next){
+      if(current.value === nodeVal){
+        previous.next = current.next
+        break
+      }
+      previous = current
+      current = current.next
+    }
+    // if(current.value === nodeVal){
+    //   previous.next = null
+    // }
+  }
+}
+
 const newList = new List()
 
 newList.add('froggie')
 newList.add('sweet dee')
 newList.add('king of rats')
 newList.add('fat mac')
-
-console.log(newList.head)
-console.log(newList.size)
+console.log(newList)
+console.log('anus')
+// console.log(newList.head)
+// newList.delete('sweet dee')
+newList.delete('king of rats')
+console.log(newList)
